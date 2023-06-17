@@ -5,7 +5,7 @@ const applicationController = express.Router();
 
 // Receive an internship application
 
-applicationController.post('/', (req, res) => {
+applicationController.post( (req, res) => {
     const { opportunityId, applicantName, email, coverLetter } = req.body;
     
     client.none(
@@ -24,7 +24,7 @@ applicationController.post('/', (req, res) => {
 
 // Retrieve all internship applications
 
-applicationController.get('/', (req, res) => {
+applicationController.get( (req, res) => {
     client.any('SELECT * FROM internship_applications')
         .then((data) => {
         res.json(data);
@@ -38,7 +38,7 @@ applicationController.get('/', (req, res) => {
 
 // Filter internship applications by opportunity ID
 
-applicationController.get('/filter', (req, res) => {
+applicationController.get( (req, res) => {
     const opportunityId = req.query.opportunityId;
 
     client.any('SELECT * FROM internship_applications WHERE opportunity_id = $1', opportunityId)

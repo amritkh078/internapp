@@ -4,7 +4,7 @@ const client = require('../config/dbConfig.js');
 const internController = express.Router();
 
 // Post an internship opportunity
-internController.post('/', (req, res) => {
+internController.post((req, res) => {
     const { department, position_title, qualifications, deadline, additionalInfo } = req.body;
     
     client.none(
@@ -23,7 +23,7 @@ internController.post('/', (req, res) => {
 
 // Retrieve all internship opportunities
 
-internController.get('/', (req, res) => {
+internController.get( (req, res) => {
     client.any('SELECT * FROM internships')
         .then((data) => {
         res.json(data);
@@ -37,7 +37,7 @@ internController.get('/', (req, res) => {
 
 // Retrieve an internship opportunity by ID
 
-internController.get('/:id', (req, res) => {
+internController.get((req, res) => {
     const internshipId = req.params.id;
 
     client.one('SELECT * FROM internships WHERE id = $1', internshipId)
@@ -52,7 +52,7 @@ internController.get('/:id', (req, res) => {
 );
 
 // Update an internship opportunity by ID
-internController.put('/:id', (req, res) => {
+internController.put((req, res) => {
     const internshipId = req.params.id;
     const { department, position_title, qualifications, deadline, additionalInfo } = req.body;
 
@@ -72,7 +72,7 @@ internController.put('/:id', (req, res) => {
 
 // Delete an internship opportunity by ID
 
-internController.delete('/:id', (req, res) => {
+internController.delete( (req, res) => {
     const internshipId = req.params.id;
 
     client.none('DELETE FROM internships WHERE id = $1', internshipId)
