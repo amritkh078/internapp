@@ -1,4 +1,3 @@
-// routes/internshipRoutes.js
 const express = require('express');
 const client = require('../config/dbConfig.js');
 
