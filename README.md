@@ -12,7 +12,7 @@ API for record storage where user can create, update, delete and view records.
 
 ` git clone  https://github.com/amritkh078/internapp` 
 
-`cd user_app`
+`cd internapp`
 
 `npm install`
 
